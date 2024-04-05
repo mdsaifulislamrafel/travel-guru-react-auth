@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Slider = () => {
     const [currentSlider, setCurrentSlider] = useState(0);
@@ -22,8 +23,9 @@ const Slider = () => {
             </div>
             {/* text container here */}
             <div className="w-1/2 px-4 left-0 absolute drop-shadow-lg text-white rounded-lg">
-                <h1 className="lg:text-8xl font-bold mb-3">Cox's bazar</h1>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg">Cox's Bazar is a city, fishing port, tourism centre and district headquarters in southeastern Bangladesh. It is famous mostly for its long natural sandy beach, and it ...</p>
+                <h1 className="lg:text-8xl font-bold mb-3">Coxes bazar</h1>
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg">Coxes Bazar is a city, fishing port, tourism centre and district headquarters in southeastern Bangladesh. It is famous mostly for its long natural sandy beach, and it ...</p>
+                <Link to={"/booking"}><button className="rounded-full bg-yellow-400 px-6 py-2 text-black font-bold mt-5 transition-all duration-300 hover:scale-90">Booking</button></Link>
             </div>
             {/* slider container */}
             <div className="w-1/2 ml-auto overflow-hidden  absolute -right-5 lg:-right-16 z-50 px-4 py-10">
