@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import logo from '../assets/logo.png'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 const Navbar = () => {
     const [dropDownState, setDropDownState] = useState(false);
     const dropDownMenuRef = useRef();
-
+    const { user, logOut } = useContext(AuthContext);
     useEffect(() => {
         const closeDropDown = (e) => {
             if (!dropDownMenuRef?.current?.contains(e?.target)) {
@@ -20,6 +21,9 @@ const Navbar = () => {
             document.removeEventListener('mousedown', closeDropDown);
         };
     }, []);
+
+
+
     return (
         <nav className="flex items-center justify-between md:justify-stretch md:gap-96 bg-[#393E46] px-4 py-2 text-white transform duration-1000 hover:mb-60 md:hover:mb-0 md:mt-5">
             <img src={logo} alt="" />
@@ -36,7 +40,9 @@ const Navbar = () => {
                 <li className="group flex  cursor-pointer flex-col">
                     Contact<span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                 </li>
-                <Link to={"/login"}><button className="rounded-full bg-sky-600 px-6 py-2 text-white transition-all duration-300 hover:scale-90">Log In</button></Link>
+                {
+                    user ? <button onClick={() => logOut()} className="rounded-full bg-sky-600 px-6 py-2 text-white transition-all duration-300 hover:scale-90">Log Out</button> : <Link to={"/login"}><button className="rounded-full bg-sky-600 px-6 py-2 text-white transition-all duration-300 hover:scale-90">Log In</button></Link>
+                }
             </ul>
             <div ref={dropDownMenuRef} onClick={() => setDropDownState(!dropDownState)} className="relative flex transition-transform md:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="cursor-pointer" > <line x1="4" x2="20" y1="12" y2="12" /> <line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /> </svg>
@@ -54,7 +60,11 @@ const Navbar = () => {
                         <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
                             Contact
                         </li>
-                        <Link to={"/login"}><button className="rounded-full bg-sky-600 px-6 py-2 text-white transition-all duration-300 hover:scale-90">Log In</button></Link>
+
+                        {
+                            user ? <button onClick={() => logOut()} className="rounded-full bg-sky-600 px-6 py-2 text-white transition-all duration-300 hover:scale-90">Log Out</button> : <Link to={"/login"}><button className="rounded-full bg-sky-600 px-6 py-2 text-white transition-all duration-300 hover:scale-90">Log In</button></Link>
+                        }
+
                     </ul>
                 )}
             </div>
