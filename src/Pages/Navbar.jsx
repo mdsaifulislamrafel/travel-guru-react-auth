@@ -31,9 +31,9 @@ const Navbar = () => {
                 <Link to={"/"} className="group flex  cursor-pointer flex-col">
                     News<span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                 </Link>
-                <li className="group flex  cursor-pointer flex-col">
+                <Link to={"/destination"} className="group flex  cursor-pointer flex-col">
                     Destination<span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
-                </li>
+                </Link>
                 <li className="group flex  cursor-pointer flex-col">
                     Blog<span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                 </li>
